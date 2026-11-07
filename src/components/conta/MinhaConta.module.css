@@ -1,0 +1,160 @@
+.pagina {
+  display: grid;
+  place-items: start center;
+  padding-block: clamp(2.5rem, 7vw, 5rem);
+}
+
+.cartao {
+  display: grid;
+  gap: 1.4rem;
+  width: 100%;
+  max-width: 560px;
+  padding: clamp(1.75rem, 5vw, 3rem);
+  border: 1px solid var(--linha-ouro);
+  background: var(--areia-clara);
+}
+.sobretitulo {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracota-texto);
+}
+.cartao h1 {
+  margin-top: -0.75rem;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+}
+.lede {
+  margin-top: -0.4rem;
+  font-size: 0.9375rem;
+  color: var(--terra-suave);
+}
+
+.duas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.grupo {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.grupo legend {
+  margin-bottom: 0.6rem;
+  padding: 0;
+}
+.opcoes {
+  display: flex;
+  gap: 0.6rem;
+}
+.opcao {
+  position: relative;
+}
+.opcao input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+/* cantos retos, como os botões do site */
+.opcao span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  min-height: 46px;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid color-mix(in srgb, var(--terra) 35%, transparent);
+  border-radius: var(--raio);
+  font-size: 0.9375rem;
+  transition:
+    background-color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+.opcao input:hover + span {
+  border-color: var(--marsala);
+}
+.opcao input:checked + span {
+  background: var(--marsala);
+  border-color: var(--marsala);
+  color: var(--areia);
+}
+.opcao input:focus-visible + span {
+  outline: 2px solid var(--marsala);
+  outline-offset: 3px;
+}
+
+.falha {
+  padding: 0.8rem 1rem;
+  border-radius: var(--raio);
+  background: color-mix(in srgb, var(--terracota) 14%, var(--areia));
+  font-size: 0.9375rem;
+  color: var(--marsala-escuro);
+}
+
+.sair {
+  justify-self: center;
+  min-height: 44px;
+  padding: 0 0.5rem;
+  border: 0;
+  background: none;
+  font-size: 0.875rem;
+  color: var(--terra-suave);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+.sair:hover {
+  color: var(--marsala);
+}
+
+/* Resumo da conta */
+.dados {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--linha);
+}
+.dados dt,
+.dados dd {
+  margin: 0;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--linha);
+}
+.dados dt {
+  padding-right: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra-suave);
+}
+.dados dd {
+  overflow-wrap: anywhere;
+}
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 520px) {
+  .duas {
+    grid-template-columns: 1fr;
+  }
+  .dados {
+    grid-template-columns: 1fr;
+  }
+  .dados dt {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}

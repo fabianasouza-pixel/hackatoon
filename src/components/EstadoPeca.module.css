@@ -1,0 +1,47 @@
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.buzio {
+  color: var(--marsala);
+}
+.ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--raio);
+  background: currentColor;
+}
+.tempo {
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--raio);
+  background: currentColor;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+.estado[data-estado="reservada"] {
+  color: color-mix(in srgb, var(--terracota) 32%, var(--terra));
+}
+.estado[data-estado="reservada"] .tempo {
+  background: var(--terracota-texto);
+  color: var(--areia-clara);
+}
+.estado[data-estado="minha"] {
+  color: var(--marsala);
+}
+.estado[data-estado="minha"] .tempo {
+  background: var(--marsala);
+  color: var(--areia-clara);
+}
+.estado[data-estado="vendida"] {
+  color: var(--marsala);
+}
+.estado[data-estado="vendida"] .ponto {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}

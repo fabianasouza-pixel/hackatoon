@@ -1,0 +1,227 @@
+.secao {
+  display: grid;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linha-ouro);
+}
+.cabeca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+.cabeca h2 {
+  font-size: 1.375rem;
+}
+.periodo,
+.grupo {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* ---------- Resumo ---------- */
+
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  background: var(--linha);
+  border: 1px solid var(--linha);
+}
+.resumo > div {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  background: var(--areia-clara);
+}
+.resumo dt {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra-suave);
+}
+.resumo dd {
+  margin: 0;
+  font-size: 1.375rem;
+  color: var(--terra);
+}
+.saldo {
+  background: var(--marsala) !important;
+}
+.saldo dt {
+  color: color-mix(in srgb, var(--areia) 80%, transparent);
+}
+.saldo dd {
+  color: var(--areia);
+}
+.saldo[data-negativo] dd {
+  color: var(--ouro-claro);
+}
+
+/* ---------- Lançar ---------- */
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--linha-ouro);
+  background: color-mix(in srgb, var(--areia-clara) 70%, transparent);
+}
+.form h3 {
+  font-family: var(--fonte-texto);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--marsala);
+}
+.grupo legend {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.linha {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+.form :global(.botao) {
+  justify-self: start;
+}
+.erro {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--terracota-texto);
+}
+.ok {
+  font-size: 0.9375rem;
+  color: var(--terra);
+}
+.vazio {
+  font-size: 0.9375rem;
+  color: var(--terra-suave);
+}
+
+/* ---------- Movimentos ---------- */
+
+.movimentos {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--linha);
+}
+.movimento {
+  display: grid;
+  grid-template-columns: 6.5rem 7.5rem minmax(0, 1fr) auto 44px;
+  align-items: center;
+  gap: 1rem;
+  min-height: 56px;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--linha);
+}
+.data {
+  font-size: 0.875rem;
+  color: var(--terra-suave);
+}
+.origem {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0 0.65rem;
+  border-radius: var(--raio);
+  box-shadow: inset 0 0 0 1px var(--linha);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--terra);
+}
+.origem[data-site] {
+  background: var(--marsala);
+  box-shadow: none;
+  color: var(--areia);
+}
+.origem[data-tipo="saida"] {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--terracota) 60%, transparent);
+  color: var(--terracota-texto);
+}
+.texto {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.valor {
+  font-weight: 500;
+  white-space: nowrap;
+}
+.valor[data-tipo="saida"] {
+  color: var(--terracota-texto);
+}
+.remover {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--raio);
+  background: none;
+  color: var(--terra-suave);
+  cursor: pointer;
+}
+.remover:hover {
+  color: var(--marsala);
+  background: color-mix(in srgb, var(--marsala) 8%, transparent);
+}
+
+@media (max-width: 760px) {
+  .resumo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .linha {
+    grid-template-columns: 1fr 1fr;
+  }
+  .descricao {
+    grid-column: 1 / -1;
+  }
+  .movimento {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "origem texto valor"
+      "data data remover";
+    row-gap: 0.25rem;
+    padding-block: 0.75rem;
+  }
+  .origem {
+    grid-area: origem;
+  }
+  .texto {
+    grid-area: texto;
+  }
+  .valor {
+    grid-area: valor;
+  }
+  .data {
+    grid-area: data;
+  }
+  .remover,
+  .semAcao {
+    grid-area: remover;
+    justify-self: end;
+  }
+  .remover {
+    width: 36px;
+    height: 36px;
+  }
+}

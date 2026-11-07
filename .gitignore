@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+.impeccable/config.local.json
+.impeccable/review
+.playwright-mcp
+.vercel
+.env*

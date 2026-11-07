@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T16:52:24+00:00",
+  "title": "Design System: Renata Ferré Jóias",
+  "extensions": {
+    "colorMeta": {
+      "marsala": {
+        "role": "primary",
+        "displayName": "Marsala do Manual",
+        "canonical": "oklch(40.1% 0.104 22.3)",
+        "tonalRamp": [
+          "#2a0000",
+          "#4b000a",
+          "#6c2325",
+          "#8f4342",
+          "#b36361",
+          "#d88481",
+          "#ffa9a5",
+          "#ffd3cf"
+        ]
+      },
+      "marsala-escuro": {
+        "role": "primary",
+        "displayName": "Marsala Fechado",
+        "canonical": "oklch(33.0% 0.087 21.2)",
+        "tonalRamp": [
+          "#250000",
+          "#450b10",
+          "#662a2b",
+          "#884848",
+          "#ab6866",
+          "#cf8987",
+          "#f8aeac",
+          "#ffd8d5"
+        ]
+      },
+      "ouro": {
+        "role": "secondary",
+        "displayName": "Ouro Envelhecido",
+        "canonical": "oklch(63.0% 0.100 62.8)",
+        "tonalRamp": [
+          "#240000",
+          "#431200",
+          "#633000",
+          "#854f14",
+          "#a76f39",
+          "#cb905a",
+          "#f3b67f",
+          "#ffe0a8"
+        ]
+      },
+      "ouro-claro": {
+        "role": "secondary",
+        "displayName": "Ouro Claro",
+        "canonical": "oklch(75.3% 0.088 71.6)",
+        "tonalRamp": [
+          "#1f0000",
+          "#3d1900",
+          "#5c3600",
+          "#7c541d",
+          "#9e743f",
+          "#c19560",
+          "#e8bb85",
+          "#ffe6ae"
+        ]
+      },
+      "terracota": {
+        "role": "tertiary",
+        "displayName": "Terracota",
+        "canonical": "oklch(53.4% 0.117 29.5)",
+        "tonalRamp": [
+          "#2d0000",
+          "#4f0000",
+          "#711e16",
+          "#943f34",
+          "#b96053",
+          "#de8173",
+          "#ffa797",
+          "#ffd1c0"
+        ]
+      },
+      "terracota-texto": {
+        "role": "tertiary",
+        "displayName": "Terracota de Texto",
+        "canonical": "color-mix(in srgb, var(--terracota) 50%, var(--terra))",
+        "tonalRamp": [
+          "#240000",
+          "#431006",
+          "#632e22",
+          "#854c3f",
+          "#a86b5e",
+          "#cc8c7e",
+          "#f4b2a3",
+          "#ffdccc"
+        ]
+      },
+      "areia": {
+        "role": "neutral",
+        "displayName": "Areia da Parede",
+        "canonical": "oklch(88.6% 0.035 63.2)",
+        "tonalRamp": [
+          "#150700",
+          "#302011",
+          "#4d3c2c",
+          "#6c5a49",
+          "#8d7968",
+          "#af9a88",
+          "#d5c0ad",
+          "#ffead7"
+        ]
+      },
+      "areia-clara": {
+        "role": "neutral",
+        "displayName": "Areia Clara",
+        "canonical": "color-mix(in srgb, var(--areia) 55%, #fff)",
+        "tonalRamp": [
+          "#110904",
+          "#2b221a",
+          "#473e35",
+          "#665c52",
+          "#867b71",
+          "#a79c92",
+          "#cdc2b7",
+          "#f8ece1"
+        ]
+      },
+      "areia-funda": {
+        "role": "neutral",
+        "displayName": "Areia Funda",
+        "canonical": "color-mix(in srgb, var(--areia) 82%, var(--ouro))",
+        "tonalRamp": [
+          "#180600",
+          "#341f08",
+          "#513a24",
+          "#715841",
+          "#917860",
+          "#b49980",
+          "#dabea5",
+          "#ffe9ce"
+        ]
+      },
+      "kraft": {
+        "role": "neutral",
+        "displayName": "Kraft",
+        "canonical": "color-mix(in srgb, var(--ouro) 42%, var(--areia))",
+        "tonalRamp": [
+          "#1c0300",
+          "#381c00",
+          "#57381a",
+          "#775637",
+          "#987556",
+          "#bb9776",
+          "#e2bc9b",
+          "#ffe6c4"
+        ]
+      },
+      "terra": {
+        "role": "neutral",
+        "displayName": "Marrom Terra",
+        "canonical": "oklch(33.8% 0.040 45.5)",
+        "tonalRamp": [
+          "#180500",
+          "#341e13",
+          "#52392e",
+          "#71574b",
+          "#92766a",
+          "#b4978a",
+          "#dbbdaf",
+          "#ffe7d9"
+        ]
+      },
+      "terra-suave": {
+        "role": "neutral",
+        "displayName": "Terra Suave",
+        "canonical": "color-mix(in srgb, var(--terra) 78%, var(--areia))",
+        "tonalRamp": [
+          "#170600",
+          "#331e13",
+          "#503a2e",
+          "#70584b",
+          "#917769",
+          "#b3988a",
+          "#d9beaf",
+          "#ffe8d8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Título de abertura da home; cabeçalhos de página usam clamp(3rem, 8vw, 6rem)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de seção na parede areia."
+      },
+      "title": {
+        "displayName": "Nome da peça",
+        "purpose": "Nome em Bodoni itálico no cartão kraft (1.375rem no pequeno)."
+      },
+      "body": {
+        "displayName": "Texto",
+        "purpose": "Texto corrido em terra, 46–56ch."
+      },
+      "label": {
+        "displayName": "Rótulo",
+        "purpose": "Rótulos de campo, estado, trilha e títulos de bloco da ficha, em caixa alta."
+      },
+      "button": {
+        "displayName": "Botão",
+        "purpose": "Botões, link-seta e navegação, caixa alta espaçada."
+      },
+      "numero": {
+        "displayName": "Número",
+        "purpose": "Nº de registro, timer mm:ss e preços tabulares."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sombra-peca",
+        "value": "0 1px 1px rgb(73 49 38 / 0.08), 0 14px 32px -12px rgb(73 49 38 / 0.35)",
+        "purpose": "Moldura da vitrine e fotos emolduradas."
+      },
+      {
+        "name": "sombra-cartao",
+        "value": "0 1px 0 rgb(73 49 38 / 0.12), 0 10px 22px -10px rgb(73 49 38 / 0.45)",
+        "purpose": "Cartão kraft grande."
+      },
+      {
+        "name": "sombra-cartao-pequeno",
+        "value": "0 1px 0 rgb(73 49 38 / 0.1), 0 6px 14px -8px rgb(73 49 38 / 0.45)",
+        "purpose": "Cartão kraft pequeno nas listas."
+      },
+      {
+        "name": "sombra-cabecalho",
+        "value": "0 1px 0 color-mix(in srgb, #b47b45 55%, transparent), 0 8px 24px -16px rgb(73 49 38 / 0.6)",
+        "purpose": "Fio dourado e sombra rasa sob o cabeçalho fixo."
+      },
+      {
+        "name": "foco-campo",
+        "value": "0 0 0 3px color-mix(in srgb, #762c2d 18%, transparent)",
+        "purpose": "Halo de foco de campos."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Ease-out exponencial para todo estado e gesto."
+      },
+      {
+        "name": "estado",
+        "value": "0.25s–0.35s",
+        "purpose": "Hover de botões, campos e chips."
+      },
+      {
+        "name": "etiqueta",
+        "value": "0.6s",
+        "purpose": "Cartão kraft se endireita e sobe 4px no hover."
+      },
+      {
+        "name": "carimbar",
+        "value": "0.8s, escala 1.8 → 0.97 → 1, rotação 2deg → -4deg",
+        "purpose": "Carimbo de acervo batido no cartão."
+      },
+      {
+        "name": "arquivo",
+        "value": "filter 1.4s; vidro opacity 1.2s",
+        "purpose": "Foto vira arquivo e a luz da vitrine se apaga."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "durações 0.01ms",
+        "purpose": "Respeita prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "largo",
+        "value": "1100px"
+      },
+      {
+        "name": "menu",
+        "value": "900px"
+      },
+      {
+        "name": "rodape",
+        "value": "800px"
+      },
+      {
+        "name": "medio",
+        "value": "700px"
+      },
+      {
+        "name": "estreito",
+        "value": "600px"
+      },
+      {
+        "name": "mobile",
+        "value": "560px"
+      }
+    ],
+    "textures": [
+      {
+        "name": "grao-leve",
+        "purpose": "Ruído de argila a 12% sobre a parede areia."
+      },
+      {
+        "name": "grao",
+        "purpose": "Ruído de papel a 50% sobre o kraft."
+      },
+      {
+        "name": "fibra",
+        "purpose": "Fibra horizontal do papel kraft."
+      },
+      {
+        "name": "faixa",
+        "purpose": "Divisor geométrico fino de losango e traço em ouro, 28×10px repetido."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão primário",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal (Reservar por 20 minutos, finalizar): marsala com filete dourado interno.",
+      "html": "<button class=\"ds-btn ds-btn-primario\">Reservar por 20 minutos</button>",
+      "css": ".ds-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:.9em 1.6em;border:0;border-radius:2px;font-family:var(--fonte-texto,Jost,Futura,sans-serif);font-size:.8125rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background-color .35s cubic-bezier(.16,1,.3,1),color .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.ds-btn:active{transform:translateY(1px)}.ds-btn:focus-visible{outline:2px solid #762c2d;outline-offset:3px}.ds-btn-primario{background:#762c2d;color:#ebd5c2}.ds-btn-primario::after{content:'';position:absolute;inset:4px;border:1px solid rgb(210 166 112 / .75);border-radius:1px;pointer-events:none;transition:inset .35s cubic-bezier(.16,1,.3,1)}.ds-btn-primario:hover{background:#5a1f21}.ds-btn-primario:hover::after{inset:6px}"
+    },
+    {
+      "name": "Botão contorno",
+      "kind": "button",
+      "refersTo": "button-contorno",
+      "description": "Ação secundária sobre areia ou kraft.",
+      "html": "<button class=\"ds-btn ds-btn-contorno\">Ver no acervo</button>",
+      "css": ".ds-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:.9em 1.6em;border:0;border-radius:2px;font-family:var(--fonte-texto,Jost,Futura,sans-serif);font-size:.8125rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background-color .35s cubic-bezier(.16,1,.3,1),color .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.ds-btn:active{transform:translateY(1px)}.ds-btn:focus-visible{outline:2px solid #762c2d;outline-offset:3px}.ds-btn-contorno{background:transparent;color:#762c2d;box-shadow:inset 0 0 0 1px #762c2d}.ds-btn-contorno:hover{background:#762c2d;color:#ebd5c2}"
+    },
+    {
+      "name": "Botão areia",
+      "kind": "button",
+      "refersTo": "button-areia",
+      "description": "Botão sobre faixas marsala (convite à encomenda).",
+      "html": "<div style=\"background:#762c2d;padding:24px\"><button class=\"ds-btn ds-btn-areia\">Encomendar a sua peça</button></div>",
+      "css": ".ds-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:.9em 1.6em;border:0;border-radius:2px;font-family:var(--fonte-texto,Jost,Futura,sans-serif);font-size:.8125rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background-color .35s cubic-bezier(.16,1,.3,1),color .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}.ds-btn:active{transform:translateY(1px)}.ds-btn:focus-visible{outline:2px solid #762c2d;outline-offset:3px}.ds-btn-areia{background:#ebd5c2;color:#762c2d}.ds-btn-areia::after{content:'';position:absolute;inset:4px;border:1px solid #b47b45;border-radius:1px;pointer-events:none;transition:inset .35s cubic-bezier(.16,1,.3,1)}.ds-btn-areia:hover{background:#f4e8dd}.ds-btn-areia:hover::after{inset:6px}.ds-btn-areia:focus-visible{outline-color:#ebd5c2}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de formulário com rótulo em caixa alta.",
+      "html": "<label class=\"ds-campo\"><span>Seu nome</span><input class=\"ds-entrada\" placeholder=\"Como devemos chamar você\"></label>",
+      "css": ".ds-campo{display:grid;gap:.4rem;font-family:Jost,Futura,sans-serif;color:#493126}.ds-campo>span{font-size:.75rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase}.ds-entrada{min-height:50px;padding:.75rem .9rem;border:1px solid rgb(73 49 38 / .35);border-radius:2px;background:#f4e8dd;font:inherit;font-size:1rem;color:#493126;caret-color:#762c2d;transition:border-color .25s cubic-bezier(.16,1,.3,1),box-shadow .25s cubic-bezier(.16,1,.3,1)}.ds-entrada::placeholder{color:#806a5d}.ds-entrada:hover{border-color:rgb(73 49 38 / .6)}.ds-entrada:focus{outline:none;border-color:#762c2d;box-shadow:0 0 0 3px rgb(118 44 45 / .18)}"
+    },
+    {
+      "name": "Ficha de escolha",
+      "kind": "chip",
+      "refersTo": "chip-escolha",
+      "description": "Escolha de metal, tipo de peça e filtros.",
+      "html": "<div class=\"ds-escolhas\"><label class=\"ds-escolha\"><input type=\"radio\" name=\"m\" checked><span>Latão</span></label><label class=\"ds-escolha\"><input type=\"radio\" name=\"m\"><span>Cobre</span></label></div>",
+      "css": ".ds-escolhas{display:flex;gap:.5rem;font-family:Jost,Futura,sans-serif}.ds-escolha{position:relative}.ds-escolha input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}.ds-escolha span{display:inline-flex;align-items:center;min-height:44px;padding:.55rem 1rem;border:1px solid rgb(73 49 38 / .35);border-radius:100px;font-size:.9375rem;color:#493126;transition:background-color .25s,color .25s,border-color .25s}.ds-escolha input:hover+span{border-color:#762c2d}.ds-escolha input:checked+span{background:#762c2d;border-color:#762c2d;color:#ebd5c2}.ds-escolha input:focus-visible+span{outline:2px solid #762c2d;outline-offset:3px}"
+    },
+    {
+      "name": "Cabeçalho",
+      "kind": "nav",
+      "refersTo": "cabecalho",
+      "description": "Faixa marsala fixa com assinatura, navegação e sacola com timer.",
+      "html": "<header class=\"ds-cab\"><span class=\"ds-cab-marca\">RENATA FERRÉ</span><nav><a href=\"#\" aria-current=\"page\">Vitrine</a><a href=\"#\">Acervo</a><a href=\"#\">Encomende a sua</a></nav><a class=\"ds-cab-sacola\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg><span>18:42</span></a></header>",
+      "css": ".ds-cab{display:flex;align-items:center;gap:2rem;min-height:72px;padding:0 24px;background:#762c2d;color:#ebd5c2;font-family:Jost,Futura,sans-serif;box-shadow:0 1px 0 rgb(180 123 69 / .55),0 8px 24px -16px rgb(73 49 38 / .6)}.ds-cab-marca{font-size:.9375rem;letter-spacing:.26em}.ds-cab nav{display:flex;gap:2.25rem;margin-left:auto}.ds-cab nav a{position:relative;padding-block:.5rem;font-size:.8125rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:rgb(235 213 194 / .88);transition:color .3s}.ds-cab nav a::after{content:'';position:absolute;left:0;right:0;bottom:.15rem;height:1px;background:#d2a670;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1)}.ds-cab nav a:hover,.ds-cab nav a[aria-current=page]{color:#ebd5c2}.ds-cab nav a:hover::after,.ds-cab nav a[aria-current=page]::after{transform:scaleX(1)}.ds-cab nav a:focus-visible,.ds-cab-sacola:focus-visible{outline:2px solid #ebd5c2;outline-offset:3px}.ds-cab-sacola{display:inline-flex;align-items:center;gap:.55rem;min-height:44px;padding:0 .6rem;border-radius:100px;color:#ebd5c2;text-decoration:none;font-size:.8125rem;font-variant-numeric:tabular-nums}.ds-cab-sacola:hover{background:rgb(235 213 194 / .1)}"
+    },
+    {
+      "name": "Vitrine com cartão kraft",
+      "kind": "card",
+      "refersTo": "cartao-kraft",
+      "description": "Assinatura do sistema: foto em moldura chapada de ouro e etiqueta kraft com furo, Nº, nome em itálico, preço e estado.",
+      "html": "<article class=\"ds-item\"><div class=\"ds-vitrine\"><div class=\"ds-foto\"></div></div><div class=\"ds-kraft\"><span class=\"ds-furo\"></span><div class=\"ds-topo\"><span class=\"ds-rf\">RF</span><span class=\"ds-num\">Nº 057</span></div><h3 class=\"ds-nome\">Anel Sankofa</h3><p class=\"ds-mat\">Anéis · Latão</p><div class=\"ds-rod\"><span class=\"ds-preco\">R$ 420,00</span><span class=\"ds-estado\"><span class=\"ds-ponto\"></span>Disponível</span></div></div></article>",
+      "css": ".ds-item{width:260px;font-family:Jost,Futura,sans-serif}.ds-vitrine{padding:8px;border:7px solid #b47b45;background:#f4e8dd;box-shadow:0 0 0 1px #9a6640,0 1px 1px rgb(73 49 38 / .08),0 14px 32px -12px rgb(73 49 38 / .35)}.ds-foto{aspect-ratio:4/5;background:#e1c5ab}.ds-kraft{position:relative;width:calc(100% - 2.5rem);margin:-2.75rem auto 0;padding:1.6rem 1.1rem 1.15rem;background:#d4af8e;color:#493126;border-radius:3px;box-shadow:0 1px 0 rgb(73 49 38 / .1),0 6px 14px -8px rgb(73 49 38 / .45);transform:rotate(-.6deg);transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-item:hover .ds-kraft{transform:rotate(0) translateY(-4px)}.ds-furo{position:absolute;top:.55rem;left:50%;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#ebd5c2;box-shadow:inset 0 1px 2px rgb(73 49 38 / .45)}.ds-topo{display:flex;justify-content:space-between;color:#762c2d}.ds-rf{font-family:'Bodoni Moda',Didot,serif;font-size:.75rem}.ds-num{font-size:.75rem;font-weight:500;letter-spacing:.18em;font-variant-numeric:tabular-nums lining-nums}.ds-nome{margin:.1rem 0 0;font-family:'Bodoni Moda',Didot,serif;font-weight:400;font-style:italic;font-size:1.375rem;line-height:1.1;color:#762c2d}.ds-mat{margin:0;font-size:.8125rem}.ds-rod{display:flex;justify-content:space-between;align-items:center;margin-top:.55rem;padding-top:.55rem;border-top:1px dashed rgb(73 49 38 / .35)}.ds-preco{font-family:'Bodoni Moda',Didot,serif;font-size:1.25rem}.ds-estado{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase}.ds-ponto{width:8px;height:8px;border-radius:50%;background:#762c2d}"
+    },
+    {
+      "name": "Carimbo de acervo",
+      "kind": "custom",
+      "refersTo": "cartao-kraft",
+      "description": "Selo marsala batido no cartão kraft quando a peça é vendida; nunca sobre a foto.",
+      "html": "<div class=\"ds-kraft-fundo\"><span class=\"ds-carimbo\"><span class=\"ds-c1\">Acervo</span><span class=\"ds-c2\">out 2026</span></span></div>",
+      "css": ".ds-kraft-fundo{padding:24px;background:#d4af8e;border-radius:3px}.ds-carimbo{display:inline-grid;justify-items:center;gap:.15rem;padding:.5rem .95rem .55rem;border:1.5px solid #762c2d;border-radius:3px;color:#762c2d;text-transform:uppercase;transform:rotate(-4deg);transform-origin:left center;transition:transform .8s cubic-bezier(.16,1,.3,1)}.ds-carimbo:hover{transform:rotate(-5deg) scale(.97)}.ds-c1{font-family:'Bodoni Moda',Didot,serif;font-size:1.375rem;line-height:1;letter-spacing:.16em}.ds-c2{font-family:Jost,Futura,sans-serif;font-size:.6875rem;font-weight:600;letter-spacing:.18em;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Estado reservada",
+      "kind": "chip",
+      "refersTo": "cartao-kraft",
+      "description": "Estado sempre visível com contagem mm:ss da reserva de 20 minutos.",
+      "html": "<span class=\"ds-est\"><span class=\"ds-est-ponto\"></span>Reservada <span class=\"ds-tempo\">18:42</span></span>",
+      "css": ".ds-est{display:inline-flex;align-items:center;gap:.5rem;font-family:Jost,Futura,sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#5f3c2f}.ds-est-ponto{width:8px;height:8px;border-radius:50%;background:currentColor}.ds-tempo{padding:.15rem .45rem;border-radius:3px;background:#784034;color:#f4e8dd;letter-spacing:.06em;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Link-seta",
+      "kind": "custom",
+      "refersTo": "button-primary",
+      "description": "Link de navegação secundária (Toda a vitrine, Ver o acervo) com ícone desenhado.",
+      "html": "<a class=\"ds-seta\" href=\"#\">Toda a vitrine <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-seta{display:inline-flex;align-items:center;gap:.5em;padding-block:.4em;font-family:Jost,Futura,sans-serif;font-size:.8125rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#762c2d;text-decoration:none;border-bottom:1px solid rgb(180 123 69 / .7);transition:gap .35s cubic-bezier(.16,1,.3,1),border-color .35s cubic-bezier(.16,1,.3,1)}.ds-seta:hover{gap:.85em;border-color:#762c2d}.ds-seta:focus-visible{outline:2px solid #762c2d;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Vitrine do Acervo",
+    "overview": "A loja é uma sala de exposição, não uma grade de e-commerce. Cada peça única aparece como obra: foto grande dentro de uma moldura chapada de ouro envelhecido com passe-partout areia-clara, e ao lado ou logo abaixo o cartão kraft da própria peça, com Nº de registro, nome em Bodoni itálico, materiais, preço e estado. As paredes são areia com um grão leve de argila; o cabeçalho é uma faixa marsala; o rodapé fecha em marrom terra. A paleta usa só as cinco cores do manual e misturas entre elas.\n\nA densidade é de galeria: poucas peças por linha, muito ar, títulos Bodoni enormes e finos contra texto Jost discreto. A materialidade vem de objetos reais da marca (o papel kraft com fibra e furo de etiqueta, o carimbo marsala de acervo, o filete dourado), nunca de ornamento étnico carregado. A única luz é o reflexo de vidro sobre a foto, que segue o ponteiro e se apaga quando a peça entra no acervo.\n\nO movimento é poucos gestos com ease-out exponencial: o carimbo batido, a luz da vitrine, a etiqueta que se endireita no hover. Não há entradas genéricas por seção.",
+    "keyCharacteristics": [
+      "Paredes areia com grão leve; faixa marsala no topo; terra no rodapé.",
+      "Foto em moldura chapada de ouro envelhecido com passe-partout areia-clara.",
+      "Cartão kraft com furo, Nº tabular e nome em Bodoni itálico como etiqueta de cada peça.",
+      "Estado da peça sempre visível (disponível, reservada com mm:ss, no acervo).",
+      "Botões Jost em caixa alta espaçada, marsala com filete dourado interno.",
+      "Peças vendidas viram arquivo: foto em sépia dessaturada, carimbo ACERVO no cartão."
+    ],
+    "rules": [
+      {
+        "name": "The Cinco Cores Rule",
+        "body": "Nenhuma cor fora do manual. Toda variação nova é `color-mix` entre marsala, terracota, ouro, areia, terra (e branco só para clarear areia).",
+        "section": "colors"
+      },
+      {
+        "name": "The Tinta Marsala Rule",
+        "body": "Sobre kraft e areia, o que é identidade da peça (Nº, nome, carimbo) é marsala; o que é informação (materiais, texto) é terra.",
+        "section": "colors"
+      },
+      {
+        "name": "The Nome em Itálico Rule",
+        "body": "O itálico da Bodoni é reservado ao nome da peça e ao slogan. Títulos de página e seção ficam em redondo.",
+        "section": "typography"
+      },
+      {
+        "name": "The Nº Tabular Rule",
+        "body": "Todo número que é endereço ou contagem (Nº, mm:ss, preço em lista) usa numerais tabulares com espaçamento levemente aberto.",
+        "section": "typography"
+      },
+      {
+        "name": "The Objeto Real Rule",
+        "body": "Só ganha sombra o que seria um objeto na sala (moldura, cartão, faixa). Botões e campos não flutuam; o foco é anel marsala de 2px com 3px de afastamento.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do expor cada peça como par vitrine + cartão kraft; a etiqueta sobrepõe a base da moldura nas listas.",
+      "Do manter o estado da peça visível em todo cartão, com o tempo da reserva em mm:ss tabular.",
+      "Do usar a faixa geométrica de losango e traço em ouro como único divisor ornamental.",
+      "Do usar o búzio como único glifo de marca, e ícones lucide desenhados para interface.",
+      "Do levar peças vendidas ao estado de arquivo: foto sépia dessaturada, luz apagada, carimbo ACERVO no cartão.",
+      "Do manter o grão leve sobre a parede areia e a fibra sobre o kraft."
+    ],
+    "donts": [
+      "Don't usar gradiente ou brilho metálico na moldura; o ouro é chapado (#b47b45).",
+      "Don't colocar o carimbo sobre a foto; ele vive no cartão kraft.",
+      "Don't pôr rótulos-sobretítulo (eyebrows) acima dos títulos; o título fala sozinho.",
+      "Don't usar setas ou símbolos tipográficos como ícones; só ícones desenhados.",
+      "Don't introduzir cores fora das cinco do manual nem padrões étnicos carregados.",
+      "Don't usar terracota pura (#a64f43) em texto pequeno sobre areia; use terracota-texto.",
+      "Don't usar sombras pretas ou sombras duras deslocadas; sombras são difusas e tingidas de terra."
+    ]
+  }
+}

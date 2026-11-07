@@ -1,0 +1,227 @@
+/* ---------- Entrada (senha) ---------- */
+
+.entrada {
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  padding-block: 3rem;
+}
+.cartaoEntrada {
+  display: grid;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 380px;
+  padding: 2rem;
+  border: 1px solid var(--linha-ouro);
+  background: var(--areia-clara);
+}
+.cartaoEntrada h1 {
+  font-size: 1.75rem;
+}
+.cartaoEntrada > p {
+  font-size: 0.9375rem;
+  color: var(--terra-suave);
+}
+
+/* ---------- Painel ---------- */
+
+.painel {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+  max-width: calc(1000px + var(--gutter) * 2);
+}
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--linha-ouro);
+}
+.topo h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+.sair {
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border: 0;
+  background: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--marsala);
+  cursor: pointer;
+}
+
+.tituloSecao {
+  font-size: 1.375rem;
+  margin-bottom: -1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linha-ouro);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: start;
+}
+
+.foto {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--raio);
+  background: var(--areia-clara);
+  cursor: pointer;
+}
+.foto[data-vazia] {
+  border: 1.5px dashed color-mix(in srgb, var(--terra) 40%, transparent);
+}
+.foto:focus-within {
+  outline: 2px solid var(--marsala);
+  outline-offset: 3px;
+}
+.fotoVazia {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  font-size: 0.9375rem;
+  text-align: center;
+  color: var(--terra-suave);
+}
+.trocar {
+  position: absolute;
+  left: 50%;
+  bottom: 0.75rem;
+  transform: translateX(-50%);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--raio);
+  background: color-mix(in srgb, var(--terra) 75%, transparent);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--areia);
+}
+
+.campos {
+  display: grid;
+  gap: 1.25rem;
+}
+.linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.erro,
+.ok {
+  padding: 0.8rem 1rem;
+  border-radius: var(--raio);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+.erro {
+  background: color-mix(in srgb, var(--terracota) 14%, var(--areia));
+  color: var(--marsala-escuro);
+}
+.ok {
+  background: color-mix(in srgb, var(--ouro) 18%, var(--areia));
+  color: var(--terra);
+}
+.ok a {
+  color: var(--marsala);
+  font-weight: 500;
+}
+
+/* ---------- Lista ---------- */
+
+.lista {
+  display: grid;
+  gap: 1rem;
+}
+.lista h2 {
+  font-size: 1.375rem;
+}
+.lista ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.vazio {
+  font-size: 0.9375rem;
+  color: var(--terra-suave);
+}
+.item {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--linha);
+}
+.itemFoto {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--raio);
+}
+.itemTexto {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.itemNome {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  color: var(--marsala);
+}
+.itemInfo {
+  font-size: 0.8125rem;
+  color: var(--terra-suave);
+}
+.remover {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border: 0;
+  background: none;
+  font-size: 0.8125rem;
+  color: var(--terra-suave);
+  cursor: pointer;
+}
+.remover:hover {
+  color: var(--marsala);
+}
+
+@media (max-width: 760px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+  .foto {
+    aspect-ratio: 1;
+  }
+  .remover span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+}
+@media (max-width: 480px) {
+  .linha {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,176 @@
+/* =========================================================
+   Compra confirmada: a peça em tela inteira sob véu marrom,
+   uma coluna, letras brancas, os próximos passos no fim.
+   ========================================================= */
+
+.tela {
+  --cafe: color-mix(in srgb, var(--terra) 70%, #000);
+  --branco: #fffaf5;
+  --branco-suave: rgb(255 250 245 / 0.72);
+  --branco-fio: rgb(255 250 245 / 0.16);
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: calc(100dvh - 72px);
+  overflow: clip;
+  background: var(--cafe);
+  color: var(--branco);
+}
+
+/* Foto(s) da compra: uma ocupa a tela; duas ou três viram tríptico */
+.fundo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}
+.fundoFoto {
+  position: relative;
+  overflow: hidden;
+}
+.fundoFoto + .fundoFoto {
+  border-left: 1px solid color-mix(in srgb, var(--ouro) 55%, transparent);
+}
+.fundoFoto img {
+  object-fit: cover;
+  transform: scale(1.06);
+  animation: aproxima 2.4s var(--ease) forwards;
+}
+@keyframes aproxima {
+  to {
+    transform: none;
+  }
+}
+/* véu marrom: tinge e escurece o centro, onde fica o texto */
+.fundo::before,
+.fundo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.fundo::before {
+  background: #a37b63;
+  mix-blend-mode: multiply;
+}
+.fundo::after {
+  background:
+    radial-gradient(ellipse 45% 65% at 50% 50%, rgb(38 25 18 / 0.78), rgb(38 25 18 / 0.42)),
+    linear-gradient(180deg, rgb(38 25 18 / 0.1), rgb(38 25 18 / 0.45));
+}
+
+.coluna {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: calc(560px + var(--gutter) * 2);
+  padding: clamp(3rem, 9vh, 6rem) var(--gutter);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 1s var(--ease),
+    transform 1s var(--ease);
+}
+.coluna[data-visivel] {
+  opacity: 1;
+  transform: none;
+}
+.tela ::selection {
+  background: var(--branco);
+  color: var(--cafe);
+}
+.tela :focus-visible {
+  outline-color: var(--branco);
+}
+
+.codigo {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+}
+.coluna h1 {
+  font-size: clamp(2.75rem, 9vw, 5rem);
+  line-height: 0.98;
+  color: var(--branco);
+  text-wrap: balance;
+}
+.coluna h1:focus {
+  outline: none;
+}
+.lede {
+  max-width: 38ch;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--branco-suave);
+}
+
+/* Recibo curto: o que foi comprado */
+.resumo {
+  display: grid;
+  width: 100%;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid color-mix(in srgb, var(--ouro) 55%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ouro) 55%, transparent);
+}
+.resumo li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.9rem;
+  font-size: 1rem;
+  text-align: left;
+}
+.resumo li + li {
+  border-top: 1px solid var(--branco-fio);
+}
+.num {
+  margin-left: 0.4em;
+  font-size: 0.8125rem;
+  color: var(--branco-suave);
+}
+.total {
+  font-weight: 500;
+}
+
+.acoes {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 0.75rem;
+}
+.secundario {
+  --fundo: transparent;
+  --texto: var(--branco);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ouro) 65%, transparent);
+}
+.secundario::after {
+  display: none;
+}
+.secundario:hover {
+  --fundo: rgb(255 250 245 / 0.08);
+}
+
+.link {
+  padding-block: 0.5rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--branco-suave);
+  text-decoration: underline;
+  text-decoration-color: var(--branco-fio);
+  text-underline-offset: 0.35em;
+}
+.link:hover {
+  color: var(--branco);
+}

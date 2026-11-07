@@ -1,0 +1,36 @@
+.item {
+  position: relative;
+  display: grid;
+  align-content: start;
+}
+.link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+.link:focus-visible {
+  outline-offset: 6px;
+}
+.etiqueta {
+  transition: transform 0.5s var(--ease);
+}
+.item:hover .etiqueta {
+  transform: translateY(-2px);
+}
+.rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem 0.75rem;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--linha-ouro);
+}
+.preco {
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--terra);
+}

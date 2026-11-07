@@ -1,0 +1,81 @@
+.pilha {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 70;
+  display: grid;
+  gap: 0.6rem;
+  width: min(380px, calc(100vw - 32px));
+}
+.aviso {
+  display: grid;
+  gap: 0.6rem;
+  padding: 1rem 1.1rem 0.8rem;
+  border-radius: var(--raio);
+  background: var(--terra);
+  color: var(--areia);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  box-shadow: 0 16px 36px -14px rgb(73 49 38 / 0.8);
+  animation: entra 0.5s var(--ease);
+}
+.aviso[data-tipo="acabando"] {
+  background: var(--marsala);
+}
+.aviso em {
+  font-family: var(--fonte-titulo);
+  font-size: 1.05em;
+}
+.aviso strong {
+  color: var(--ouro-claro);
+}
+.aviso[data-tipo="acabando"] strong,
+.aviso[data-tipo="acabando"] .acao {
+  color: var(--areia);
+}
+@keyframes entra {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+.linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.acao {
+  min-height: 40px;
+  padding: 0 0.1rem;
+  border: 0;
+  background: none;
+  color: var(--ouro-claro);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+.nota {
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--areia) 75%, transparent);
+}
+.fechar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: none;
+  color: var(--areia);
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .pilha {
+    bottom: 68px;
+  }
+}

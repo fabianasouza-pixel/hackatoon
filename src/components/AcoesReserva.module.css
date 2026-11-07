@@ -1,0 +1,67 @@
+.acoes {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linha-ouro);
+}
+.linhaPreco {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+.preco {
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--terra);
+}
+.texto {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--terra);
+}
+.texto strong {
+  font-weight: 600;
+  color: var(--marsala);
+}
+.barra {
+  height: 3px;
+  background: color-mix(in srgb, var(--terra) 18%, transparent);
+  overflow: hidden;
+}
+.barra span {
+  display: block;
+  height: 100%;
+  background: var(--marsala);
+  transform-origin: left;
+  transition: transform 1s linear;
+}
+.secundario {
+  justify-self: center;
+  min-height: 44px;
+  padding: 0 0.5rem;
+  border: 0;
+  background: none;
+  font-size: 0.875rem;
+  color: var(--terra);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--terra) 40%, transparent);
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+.secundario:hover {
+  color: var(--marsala);
+  text-decoration-color: currentColor;
+}
+.erro {
+  padding: 0.8rem 1rem;
+  border-radius: var(--raio);
+  background: color-mix(in srgb, var(--terracota) 14%, var(--kraft));
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--marsala-escuro);
+}

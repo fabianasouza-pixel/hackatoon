@@ -1,0 +1,257 @@
+.secao {
+  display: grid;
+  gap: 1.25rem;
+}
+.cabeca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+.cabeca h2 {
+  font-size: 1.375rem;
+}
+.resumo {
+  font-size: 0.9375rem;
+  color: var(--terra-suave);
+}
+.vazio {
+  font-size: 0.9375rem;
+  color: var(--terra-suave);
+}
+
+.filtros {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.contagem {
+  font-size: 0.8125rem;
+  opacity: 0.75;
+}
+
+.lista {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--linha);
+}
+
+/* ---------- Um pedido ---------- */
+
+.pedido {
+  border-bottom: 1px solid var(--linha);
+}
+.pedido[open] {
+  background: color-mix(in srgb, var(--areia-clara) 60%, transparent);
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: minmax(9rem, 1.1fr) minmax(0, 1.6fr) auto auto auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: 64px;
+  padding: 0.85rem 0.75rem;
+  list-style: none;
+  cursor: pointer;
+}
+.linha::-webkit-details-marker {
+  display: none;
+}
+.linha:hover .abrir {
+  color: var(--marsala);
+}
+.linha:focus-visible {
+  outline: 2px solid var(--marsala);
+  outline-offset: -2px;
+}
+
+.identificacao,
+.cliente {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.codigo {
+  font-weight: 500;
+  color: var(--marsala);
+}
+.data,
+.qtd {
+  font-size: 0.8125rem;
+  color: var(--terra-suave);
+}
+.cliente {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.total {
+  font-weight: 500;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0 0.7rem;
+  border-radius: var(--raio);
+  box-shadow: inset 0 0 0 1px var(--marsala);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--marsala);
+}
+.status[data-status="preparar"] {
+  background: var(--marsala);
+  color: var(--areia);
+}
+.status[data-status="entregue"] {
+  box-shadow: inset 0 0 0 1px var(--linha);
+  color: var(--terra-suave);
+}
+
+.abrir {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra-suave);
+  transition: color 0.25s var(--ease);
+}
+.abrir svg {
+  transition: transform 0.3s var(--ease);
+}
+.pedido[open] .abrir svg {
+  transform: rotate(180deg);
+}
+
+/* ---------- Detalhes ---------- */
+
+.corpo {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0.5rem 0.75rem 1.5rem;
+}
+.bloco {
+  display: grid;
+  gap: 0.6rem;
+}
+.corpo h3,
+.mudarStatus legend,
+.dados dt {
+  font-family: var(--fonte-texto);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terra-suave);
+}
+
+.itens {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.item {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem;
+}
+.itemFoto {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--raio);
+  background: var(--areia-funda);
+}
+.itemTexto {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+.itemTexto a {
+  color: var(--marsala);
+  font-weight: 500;
+}
+.itemTexto :global(.numero) {
+  font-size: 0.8125rem;
+  color: var(--terra-suave);
+}
+
+.dados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 0;
+}
+.dados div {
+  display: grid;
+  gap: 0.25rem;
+  align-content: start;
+}
+.dados dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.dados a {
+  color: var(--marsala);
+}
+
+.mudarStatus {
+  display: grid;
+  gap: 0.6rem;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.mudarStatus legend {
+  margin-bottom: 0.6rem;
+}
+
+.verMais {
+  justify-self: center;
+}
+
+@media (max-width: 760px) {
+  .linha {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem 1rem;
+    padding-inline: 0.25rem;
+  }
+  .cliente {
+    grid-column: 1;
+  }
+  .total {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+  .status {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+  }
+  .abrir {
+    grid-column: 1 / -1;
+  }
+  .corpo {
+    padding-inline: 0.25rem;
+  }
+}

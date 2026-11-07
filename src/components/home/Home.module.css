@@ -1,0 +1,622 @@
+/* ---------- Chegada (vibe pôster: vinho, ouro e ornamentos) ---------- */
+
+.chegada {
+  --vinho: color-mix(in srgb, var(--marsala) 62%, #1c0a0b);
+  --ouro-luz: color-mix(in srgb, var(--ouro-claro) 80%, #f3dcb4);
+  /* altura do degradê que leva a capa até a cor da página */
+  --degrade: clamp(180px, 22vw, 320px);
+  padding-bottom: calc(var(--degrade) * 0.6);
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+  min-height: min(calc(100dvh - 72px), 900px);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 75% 40%, var(--marsala) 0%, var(--vinho) 70%),
+    var(--vinho);
+  color: var(--areia);
+}
+/* grão de veludo */
+.chegada::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--grao);
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+/* moldura dourada fina */
+.chegada::after {
+  content: "";
+  position: absolute;
+  inset: clamp(10px, 1.6vw, 22px);
+  z-index: 3;
+  border: 1px solid color-mix(in srgb, var(--ouro-claro) 70%, transparent);
+  box-shadow: inset 0 0 0 4px color-mix(in srgb, var(--vinho) 0%, transparent),
+    inset 0 0 0 5px color-mix(in srgb, var(--ouro) 35%, transparent);
+  pointer-events: none;
+  /* a moldura some junto com o degradê */
+  -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - var(--degrade) * 0.95), transparent calc(100% - var(--degrade) * 0.1));
+  mask-image: linear-gradient(180deg, #000 calc(100% - var(--degrade) * 0.95), transparent calc(100% - var(--degrade) * 0.1));
+}
+
+.chegadaFoto {
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  width: 64%;
+  /* desce até o fim da capa, por baixo do degradê */
+  margin: 0 0 calc(var(--degrade) * -0.6);
+  z-index: 0;
+  /* a foto se dissolve no vinho, sem borda */
+  /* a foto se dissolve no vinho à direita e embaixo */
+  -webkit-mask-image: linear-gradient(90deg, #000 45%, transparent 98%), linear-gradient(180deg, #000 45%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, #000 45%, transparent 98%), linear-gradient(180deg, #000 45%, transparent 100%);
+  mask-composite: intersect;
+}
+.chegadaFoto img {
+  filter: contrast(1.04) brightness(0.92);
+}
+/* leve tom marsala e borda que se dissolve no vinho */
+.chegadaFoto::before,
+.chegadaFoto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.chegadaFoto::before {
+  background: color-mix(in srgb, var(--marsala) 55%, var(--ouro));
+  mix-blend-mode: multiply;
+  opacity: 0.18;
+}
+.chegadaFoto::after {
+  background: radial-gradient(90% 80% at 40% 45%, transparent 40%, color-mix(in srgb, var(--vinho) 55%, transparent) 100%);
+}
+
+.chegadaTotem {
+  position: absolute;
+  top: 50%;
+  right: clamp(26px, 3.4vw, 52px);
+  z-index: 1;
+  width: 22px;
+  height: auto;
+  transform: translateY(-50%);
+  color: var(--ouro);
+  opacity: 0.85;
+}
+
+.chegadaTexto {
+  position: relative;
+  z-index: 2;
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 1.1rem;
+  padding: clamp(3rem, 7vw, 6rem) clamp(4rem, 7vw, 7rem) clamp(3rem, 7vw, 6rem) clamp(1rem, 2vw, 2rem);
+  text-align: center;
+}
+.chegadaSobretitulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ouro-luz);
+  padding-left: 0.32em;
+}
+.chegadaOrnamento {
+  width: min(220px, 60%);
+  color: var(--ouro);
+}
+.chegadaTexto h1 {
+  display: grid;
+  margin-top: 0.25rem;
+  font-size: clamp(2.1rem, 4.4vw, 4.25rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: 0.02em;
+  background: linear-gradient(175deg, var(--ouro-luz) 15%, var(--ouro) 55%, var(--ouro-claro) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.chegadaTexto h1 em {
+  font-style: normal;
+  font-size: 1.12em;
+  padding-bottom: 0.08em;
+}
+.chegadaLosango {
+  width: 16px;
+  color: var(--ouro);
+}
+.chegadaPilares {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  max-width: 520px;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.chegadaPilares li {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+}
+.chegadaPilares li + li {
+  border-left: 1px solid color-mix(in srgb, var(--ouro) 55%, transparent);
+}
+.chegadaPilares strong {
+  font-family: var(--fonte-display);
+  font-weight: 500;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  letter-spacing: 0.08em;
+  color: var(--ouro-luz);
+}
+.chegadaPilares span {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--areia) 78%, transparent);
+}
+.chegadaAcoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1.75rem;
+  margin-top: 1rem;
+}
+.chegadaLink {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--areia);
+  text-decoration: underline;
+  text-decoration-color: var(--ouro);
+  text-underline-offset: 0.5em;
+}
+.chegadaLink:hover {
+  color: var(--ouro-luz);
+}
+
+/* ---------- Degradê: a capa vira a cor da página ---------- */
+
+.chegadaDegrade {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1; /* sobre a foto e o vinho, abaixo do texto */
+  height: var(--degrade);
+  background: linear-gradient(
+    180deg,
+    /* curva bem gradual (smoothstep): o vinho clareia devagar ao longo de toda a altura */
+    transparent 0%,
+    color-mix(in srgb, var(--areia) 1%, transparent) 8%,
+    color-mix(in srgb, var(--areia) 5%, transparent) 17%,
+    color-mix(in srgb, var(--areia) 12%, transparent) 25%,
+    color-mix(in srgb, var(--areia) 21%, transparent) 33%,
+    color-mix(in srgb, var(--areia) 32%, transparent) 42%,
+    color-mix(in srgb, var(--areia) 45%, transparent) 50%,
+    color-mix(in srgb, var(--areia) 58%, transparent) 58%,
+    color-mix(in srgb, var(--areia) 71%, transparent) 67%,
+    color-mix(in srgb, var(--areia) 82%, transparent) 75%,
+    color-mix(in srgb, var(--areia) 92%, transparent) 83%,
+    color-mix(in srgb, var(--areia) 98%, transparent) 92%,
+    var(--areia) 100%
+  );
+  pointer-events: none;
+}
+.chegadaDegrade::after {
+  /* mesmo grão leve do fundo areia, para não sobrar emenda embaixo */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grao-leve);
+  -webkit-mask-image: linear-gradient(180deg, transparent 40%, #000);
+  mask-image: linear-gradient(180deg, transparent 40%, #000);
+}
+
+/* ---------- Vitrine de hoje ---------- */
+
+.hero {
+  /* o fim do degradê da capa já dá o respiro de cima */
+  padding-block: clamp(1.5rem, 3.5vw, 2.75rem) clamp(4rem, 9vw, 7rem);
+  scroll-margin-top: 72px;
+}
+.heroTitulo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: 1rem 3rem;
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+.heroTitulo h2 {
+  font-size: clamp(2.25rem, 5.6vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+.heroData {
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.heroPeca {
+  /* foto e ficha cabem juntas na tela, abaixo do cabeçalho */
+  --altura-foto: clamp(420px, calc(100dvh - 72px - 3rem), 820px);
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  scroll-margin-top: calc(72px + 1.5rem);
+}
+.heroFoto {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+  height: var(--altura-foto);
+}
+.heroCartao {
+  grid-column: 2;
+  grid-row: 1;
+  padding-block: 2rem;
+  border-block: 1px solid var(--linha-ouro);
+}
+.heroCartao h2 {
+  font-size: clamp(2.25rem, 3.6vw, 3.5rem);
+}
+.heroDescricao {
+  margin-top: 0.4rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  max-width: 46ch;
+}
+.vazia {
+  display: grid;
+  justify-items: start;
+  gap: 1.5rem;
+  padding: clamp(2rem, 6vw, 4rem);
+  border: 1px solid var(--linha-ouro);
+  background: var(--areia-clara);
+}
+.vazia p {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.2;
+  max-width: 26ch;
+  color: var(--marsala);
+}
+.vaziaAcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ---------- Seções ---------- */
+
+.secaoTopo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+.secaoTopo h2 {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+}
+.secaoLede {
+  margin-top: 0.75rem;
+  max-width: 52ch;
+  color: var(--terra);
+}
+
+.outras {
+  display: grid;
+  justify-items: start;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--linha-ouro);
+}
+.outras > .trilho {
+  width: 100%;
+}
+.trilho {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* ---------- Como funciona ---------- */
+
+.funciona {
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  background-color: var(--kraft);
+  background-image: var(--fibra), var(--grao);
+  border-block: 1px solid var(--linha-ouro);
+}
+.funciona h2 {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  max-width: 16ch;
+}
+.passos {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.passos::before {
+  /* fio que liga os estados */
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--marsala);
+  opacity: 0.45;
+}
+.passos li {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 34ch;
+}
+.passoEstado {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2rem;
+  padding: 0 0.85rem;
+  border-radius: var(--raio);
+  background: var(--areia);
+  box-shadow: inset 0 0 0 1px var(--marsala);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--marsala);
+}
+.passoEstado[data-estado="reservada"] {
+  background: var(--marsala);
+  color: var(--areia);
+}
+.passoEstado[data-estado="vendida"] {
+  background: var(--terra);
+  box-shadow: none;
+  color: var(--areia);
+}
+
+/* ---------- Quem faz ---------- */
+
+.renata {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+  padding-block: clamp(4.5rem, 10vw, 8rem);
+}
+.renataFotos {
+  position: relative;
+  padding-bottom: 18%;
+}
+.renataPrincipal {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  width: 82%;
+  overflow: hidden;
+  box-shadow: var(--sombra-peca);
+}
+.renataBancada {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 38%;
+  margin: 0;
+  padding: 8px 8px 0;
+  background: var(--areia-clara);
+  box-shadow: var(--sombra-peca);
+  transform: rotate(2deg);
+}
+.bancadaFoto {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+.renataBancada figcaption {
+  padding: 0.55rem 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--terra);
+}
+.renataTexto {
+  display: grid;
+  gap: 1.25rem;
+  padding-top: clamp(0rem, 4vw, 3rem);
+}
+.renataTexto h2 {
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  line-height: 0.98;
+  margin-bottom: 0.5rem;
+}
+.renataTexto p {
+  font-size: 1.0625rem;
+  max-width: 46ch;
+}
+.renataUsando {
+  position: relative;
+  margin: 1.5rem 0 0;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  box-shadow: var(--sombra-peca);
+}
+
+/* ---------- Acervo ---------- */
+
+.acervo {
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+.gradeAcervo {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* ---------- Encomenda ---------- */
+
+.encomenda {
+  background: var(--marsala);
+  color: var(--areia);
+}
+.encomenda :global(.faixa) {
+  filter: brightness(1.25);
+}
+.encomendaGrade {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem clamp(2rem, 6vw, 6rem);
+  align-items: center;
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+.encomendaGrade h2 {
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  font-style: italic;
+  color: var(--areia);
+  line-height: 0.95;
+}
+.encomendaGrade p {
+  font-size: 1.125rem;
+  max-width: 44ch;
+  margin-bottom: 1.75rem;
+  color: color-mix(in srgb, var(--areia) 92%, transparent);
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 900px) {
+  .chegada {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .chegadaFoto {
+    grid-column: 1;
+    aspect-ratio: 1 / 1;
+    max-height: 62vh;
+    width: 100%;
+    margin: 0; /* no celular a foto fica só em cima do texto */
+    -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent 98%);
+    mask-image: linear-gradient(180deg, #000 50%, transparent 98%);
+  }
+  .chegadaTexto {
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+    margin-top: -4.5rem;
+    padding: 0 2rem 3.5rem;
+  }
+  .chegadaTotem {
+    display: none;
+  }
+  .heroTitulo {
+    grid-template-columns: 1fr;
+  }
+  .heroPeca {
+    grid-template-columns: 1fr;
+  }
+  .heroFoto {
+    height: min(calc(100dvh - 64px - 2rem), 125vw);
+  }
+  .heroCartao {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: none;
+  }
+  .renata {
+    grid-template-columns: 1fr;
+  }
+  .gradeAcervo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .encomendaGrade {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .chegadaPilares li {
+    padding-inline: 0.4rem;
+  }
+  .passos {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding-left: 1.5rem;
+  }
+  .passos::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+  .trilho {
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: 78%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 0.25rem var(--gutter) 1.25rem;
+    scroll-padding-inline: var(--gutter);
+  }
+  .trilho > * {
+    scroll-snap-align: start;
+  }
+}
+
+/* ---------- Entrada suave ao rolar (só onde o navegador suporta) ---------- */
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .heroFoto,
+    .heroCartao,
+    .outras .trilho > *,
+    .passos li,
+    .renataFotos,
+    .renataTexto,
+    .gradeAcervo > *,
+    .encomendaGrade > * {
+      animation: surgir linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

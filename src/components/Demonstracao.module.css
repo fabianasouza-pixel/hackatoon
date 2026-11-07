@@ -1,0 +1,108 @@
+.demo {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 60;
+  display: grid;
+  justify-items: start;
+  gap: 0.6rem;
+}
+.gatilho {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 40px;
+  padding: 0 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--ouro) 70%, transparent);
+  border-radius: var(--raio);
+  background: var(--terra);
+  color: var(--areia);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 20px -10px rgb(73 49 38 / 0.7);
+}
+.painel {
+  width: min(340px, calc(100vw - 32px));
+  padding: 1.1rem 1.1rem 0.9rem;
+  border-radius: var(--raio);
+  background: var(--terra);
+  color: var(--areia);
+  box-shadow: 0 18px 40px -16px rgb(73 49 38 / 0.8);
+  animation: sobe 0.4s var(--ease);
+}
+@keyframes sobe {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  color: var(--ouro-claro);
+}
+.fechar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: var(--areia);
+  cursor: pointer;
+}
+.explica {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--areia) 82%, transparent);
+  margin: 0.25rem 0 0.9rem;
+}
+.botoes {
+  display: grid;
+  gap: 0.4rem;
+}
+.botoes button {
+  min-height: 42px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--areia) 20%, transparent);
+  border-radius: var(--raio);
+  background: transparent;
+  color: var(--areia);
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.botoes button:hover {
+  background: color-mix(in srgb, var(--areia) 8%, transparent);
+  border-color: var(--ouro);
+}
+.msg {
+  min-height: 1.4em;
+  margin-top: 0.7rem;
+  font-size: 0.8125rem;
+  color: var(--ouro-claro);
+}
+
+@media (max-width: 700px) {
+  .gatilho {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+  .gatilhoTexto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}

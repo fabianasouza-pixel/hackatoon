@@ -1,0 +1,106 @@
+.trilha {
+  display: flex;
+  gap: 0.6rem;
+  padding-block: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.trilha a {
+  color: var(--marsala);
+}
+
+.peca {
+  display: grid;
+  grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+.foto {
+  position: sticky;
+  top: 96px;
+}
+.info {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-top: 0.5rem;
+}
+.cartao {
+  padding-bottom: 0.5rem;
+}
+.bloco {
+  display: grid;
+  gap: 0.85rem;
+}
+.bloco h2 {
+  font-size: 0.75rem;
+  font-family: var(--fonte-texto);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--marsala);
+  padding-bottom: 0.7rem;
+  background-image: var(--faixa);
+  background-repeat: repeat-x;
+  background-position: bottom left;
+}
+.bloco > p {
+  font-size: 1.0625rem;
+  max-width: 52ch;
+}
+.ficha {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  margin: 0;
+}
+.ficha dt,
+.ficha dd {
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--linha);
+}
+.ficha dt {
+  padding-right: 2rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--terra-suave);
+}
+.ficha dd {
+  margin: 0;
+  font-size: 0.9375rem;
+}
+.regra {
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--linha-ouro);
+  background: var(--areia-clara);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.mais {
+  padding-top: clamp(4rem, 8vw, 6rem);
+}
+.mais h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 2rem;
+}
+.maisGrade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (max-width: 900px) {
+  .peca {
+    grid-template-columns: 1fr;
+  }
+  .foto {
+    position: static;
+  }
+  .info {
+    margin-top: -3rem;
+    padding-inline: 0.5rem;
+    position: relative;
+  }
+}

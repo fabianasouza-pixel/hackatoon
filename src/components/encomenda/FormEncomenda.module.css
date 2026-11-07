@@ -1,0 +1,626 @@
+/* =========================================================
+   Encomenda: uma tela só.
+   As peças da Renata em tela inteira sob um véu marrom,
+   formulário em uma coluna, letras brancas, enviar no fim.
+   ========================================================= */
+
+.tela {
+  scroll-margin-top: 72px;
+  --cafe: color-mix(in srgb, var(--terra) 70%, #000);
+  --branco: #fffaf5;
+  --branco-suave: rgb(255 250 245 / 0.72);
+  --branco-fio: rgb(255 250 245 / 0.32);
+  --erro: #f5c9a9;
+  /* superfícies sólidas: nada de botão transparente */
+  --pilula: #5e4234;
+  --pilula-hover: #6f4f3f;
+  --campo-fundo: #3b2920;
+
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100dvh - 72px);
+  /* clip (e não hidden) para o fundo fixo continuar funcionando */
+  overflow: clip;
+  background: var(--cafe);
+  color: var(--branco);
+}
+
+/* Tríptico das peças: três fotos verticais lado a lado,
+   paradas na altura da tela enquanto o formulário rola por cima */
+.fundo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.fundoFixo {
+  position: sticky;
+  top: 72px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: calc(100dvh - 72px);
+}
+.fundoFoto {
+  position: relative;
+  overflow: hidden;
+}
+.fundoFoto + .fundoFoto {
+  border-left: 1px solid color-mix(in srgb, var(--ouro) 55%, transparent);
+}
+.fundoFoto img {
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+/* tinge o branco do pelúcia de marrom, sem apagar o brilho do metal */
+.fundoFixo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #a37b63;
+  mix-blend-mode: multiply;
+}
+/* escurece o centro, onde fica o texto */
+.fundoFixo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgb(38 25 18 / 0.35), rgb(38 25 18 / 0.78) 30%, rgb(38 25 18 / 0.78) 70%, rgb(38 25 18 / 0.35)),
+    linear-gradient(180deg, rgb(38 25 18 / 0.2), rgb(38 25 18 / 0.45));
+}
+
+.coluna {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+  width: 100%;
+  max-width: calc(720px + var(--gutter) * 2);
+  margin-inline: auto;
+  padding: clamp(3rem, 9vw, 6.5rem) var(--gutter) clamp(4rem, 9vw, 7rem);
+}
+
+.coluna[data-visivel] {
+  opacity: 1;
+  transform: none;
+}
+
+.tela ::selection {
+  background: var(--branco);
+  color: var(--cafe);
+}
+.tela :focus-visible {
+  outline-color: var(--branco);
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.cabeca {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 6vw, 3.5rem);
+  text-align: center;
+}
+.cabeca h2,
+.confirmacao h2 {
+  font-size: clamp(3rem, 10vw, 5.75rem);
+  line-height: 0.95;
+  color: var(--branco);
+}
+.cabeca p {
+  font-size: 1.125rem;
+  color: var(--branco-suave);
+}
+
+/* ---------- Campos ---------- */
+
+/* Painel sólido do formulário, com moldura dourada fina */
+.form {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  padding: clamp(1.5rem, 4.5vw, 3rem);
+  background: #2d1f17;
+  border: 1px solid color-mix(in srgb, var(--ouro) 65%, transparent);
+  box-shadow: 0 40px 70px -30px rgb(0 0 0 / 0.85);
+}
+.form::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid color-mix(in srgb, var(--ouro) 25%, transparent);
+  pointer-events: none;
+}
+.form > .campo + .campo {
+  padding-top: 2rem;
+  border-top: 1px solid rgb(255 250 245 / 0.1);
+}
+.campo {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.campo legend,
+.campo > label,
+.seletor label,
+.rotulo {
+  padding: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--branco);
+}
+.campo > label,
+.seletor label,
+.rotulo {
+  margin-bottom: 0;
+}
+/* legenda vira item normal do grid: não senta em cima da divisória */
+.campo legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.grupo {
+  display: grid;
+  gap: 0.55rem;
+}
+.grupo + .grupo {
+  margin-top: 0.6rem;
+}
+.grupoNome {
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: var(--branco-suave);
+}
+
+/* Opções em pílula */
+.opcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+.opcao {
+  position: relative;
+}
+.opcao input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.opcao span {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6em;
+  min-height: 48px;
+  padding: 0.95rem 1.3rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--ouro) 55%, transparent);
+  /* cantos retos, como os botões da página inicial */
+  border-radius: var(--raio);
+  background: var(--pilula);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--areia);
+  transition:
+    background-color 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    color 0.35s var(--ease);
+}
+/* filete dourado por dentro, igual ao botão da página inicial */
+.opcao span::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid transparent;
+  border-radius: 1px;
+  pointer-events: none;
+  transition:
+    border-color 0.35s var(--ease),
+    inset 0.35s var(--ease);
+}
+.opcao small {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  opacity: 0.8;
+}
+.opcao input:hover + span {
+  background: var(--pilula-hover);
+  border-color: var(--ouro);
+}
+.opcao input:checked + span {
+  background: var(--areia);
+  border-color: var(--areia);
+  color: var(--marsala);
+}
+.opcao input:checked + span::after {
+  border-color: var(--ouro);
+}
+.opcao input:checked:hover + span::after {
+  inset: 6px;
+}
+.opcao input:focus-visible + span {
+  outline: 2px solid var(--branco);
+  outline-offset: 3px;
+}
+
+/* Entradas de texto */
+.entrada {
+  width: 100%;
+  min-height: 52px;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgb(255 250 245 / 0.22);
+  border-radius: var(--raio);
+  background: var(--campo-fundo);
+  color: var(--branco);
+  font-size: 1rem;
+  caret-color: var(--branco);
+  transition:
+    border-color 0.25s var(--ease),
+    background-color 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+.entrada::placeholder {
+  color: rgb(255 250 245 / 0.5);
+}
+.entrada:hover {
+  border-color: rgb(255 250 245 / 0.6);
+}
+.entrada:focus {
+  outline: none;
+  border-color: var(--branco);
+  background: var(--campo-fundo);
+  box-shadow: 0 0 0 3px rgb(255 250 245 / 0.14);
+}
+.entrada[aria-invalid="true"] {
+  border-color: var(--erro);
+}
+textarea.entrada {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.select {
+  appearance: none;
+  padding-right: 2.75rem;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23FFFAF5' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+.select option {
+  color: var(--terra);
+  background: #fff;
+}
+
+.erro {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--erro);
+}
+.nota {
+  font-size: 0.9375rem;
+  color: var(--branco-suave);
+}
+.nota a {
+  color: var(--branco);
+}
+.textoBotao {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--areia);
+  text-decoration: underline;
+  text-decoration-color: var(--ouro);
+  text-underline-offset: 0.5em;
+  cursor: pointer;
+}
+.textoBotao:hover {
+  color: var(--ouro-claro);
+}
+
+/* Campo de medida aparece quando a peça pede */
+.surge {
+  animation: surgir 0.45s var(--ease) both;
+}
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.aros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.seletor {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.tabelaAros summary {
+  display: inline-block;
+  padding-block: 0.4rem;
+  color: var(--branco);
+  text-decoration: underline;
+  text-decoration-color: var(--branco-fio);
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+  list-style: none;
+}
+.tabelaAros summary::-webkit-details-marker {
+  display: none;
+}
+.tabelaAros[open] {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.25rem 1rem 1rem;
+  background: var(--campo-fundo);
+  border: 1px solid rgb(255 250 245 / 0.18);
+}
+.tabelaAros[open] > p,
+.tabelaAros table {
+  width: 100%;
+  max-width: 420px;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+.tabelaAros th,
+.tabelaAros td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid rgb(255 250 245 / 0.14);
+  text-align: left;
+  font-weight: 400;
+}
+.tabelaAros thead th {
+  font-weight: 500;
+  color: var(--branco-suave);
+}
+
+/* Fotos */
+.fotos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.foto,
+.anexar {
+  position: relative;
+  width: 88px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--raio);
+}
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.foto button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: var(--raio);
+  background: var(--cafe);
+  color: var(--branco);
+  cursor: pointer;
+}
+.anexar {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.3rem;
+  border: 1px dashed color-mix(in srgb, var(--ouro) 70%, transparent);
+  background: var(--pilula);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--areia);
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease);
+}
+.anexar:hover {
+  background: var(--pilula-hover);
+}
+.anexar:focus-within {
+  outline: 2px solid var(--branco);
+  outline-offset: 3px;
+}
+
+/* ---------- Enviar ---------- */
+
+.enviar {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.9rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--ouro) 55%, transparent);
+  text-align: center;
+}
+.enviar p {
+  font-size: 0.9375rem;
+  color: var(--branco-suave);
+}
+/* ---------- Confirmação ---------- */
+
+.confirmacao {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  padding-top: clamp(2rem, 8vh, 6rem);
+  text-align: center;
+}
+.confirmacao h2 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+}
+.confirmacao h2:focus {
+  outline: none;
+}
+.confirmacao > p:first-of-type {
+  max-width: 44ch;
+  font-size: 1.125rem;
+}
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1.75rem;
+  margin-top: 0.75rem;
+}
+
+/* =========================================================
+   Como funciona: primeira tela, antes do formulário
+   ========================================================= */
+
+.como {
+  --cafe: color-mix(in srgb, var(--terra) 70%, #000);
+  --branco: #fffaf5;
+  --branco-suave: rgb(255 250 245 / 0.72);
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: calc(100dvh - 72px);
+  background-color: var(--cafe);
+  background-image:
+    var(--grao),
+    radial-gradient(80% 60% at 50% 0%, color-mix(in srgb, var(--terra) 85%, var(--ouro) 15%), transparent 70%);
+  background-blend-mode: soft-light, normal;
+  color: var(--branco);
+}
+.comoInterno {
+  display: grid;
+  justify-items: center;
+  gap: clamp(2.5rem, 5vw, 3.75rem);
+  width: 100%;
+  max-width: calc(1200px + var(--gutter) * 2);
+  margin-inline: auto;
+  padding: clamp(3rem, 7vw, 5rem) var(--gutter);
+}
+.comoCabeca {
+  display: grid;
+  gap: 1rem;
+  max-width: 640px;
+  text-align: center;
+}
+.comoCabeca h1 {
+  font-size: clamp(2.75rem, 7vw, 4.75rem);
+  line-height: 1;
+  color: var(--branco);
+}
+.comoCabeca p {
+  font-size: 1.125rem;
+  color: var(--branco-suave);
+}
+
+.etapas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.etapa {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 0.9rem;
+  text-align: center;
+}
+.etapaNumero {
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--ouro-claro);
+}
+.etapaFoto {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  outline: 1px solid color-mix(in srgb, var(--ouro) 60%, transparent);
+  outline-offset: 5px;
+  margin-block: 0.35rem 0.5rem;
+}
+.etapaTitulo {
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;
+  text-transform: uppercase;
+  color: var(--branco);
+}
+.etapaTexto {
+  max-width: 30ch;
+  font-size: 0.9875rem;
+  line-height: 1.55;
+  color: var(--branco-suave);
+}
+@media (max-width: 900px) {
+  .etapas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2.5rem;
+  }
+}
+@media (max-width: 520px) {
+  .etapas {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .etapa {
+    grid-template-columns: 112px 1fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 1.1rem;
+    row-gap: 0.35rem;
+    justify-items: start;
+    text-align: left;
+  }
+  .etapaNumero {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .etapaFoto {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    margin: 0;
+  }
+  .etapaTitulo {
+    grid-column: 2;
+    padding-left: 0;
+  }
+  .etapaTexto {
+    grid-column: 2;
+  }
+}

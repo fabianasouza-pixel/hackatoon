@@ -1,0 +1,67 @@
+.cabeca {
+  padding-bottom: 1.5rem;
+}
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  background-image: var(--faixa);
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+.filtros {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.contagem {
+  font-size: 0.8125rem;
+  opacity: 0.75;
+}
+.ordem {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 190px;
+}
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 2.5rem);
+}
+.gradeAcervo {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+}
+.vazio {
+  display: grid;
+  justify-items: start;
+  gap: 0.75rem;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid var(--linha-ouro);
+  background: var(--areia-clara);
+}
+.vazioTitulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+  color: var(--marsala);
+}
+.vazioAcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+@media (max-width: 560px) {
+  .gradeAcervo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1rem;
+  }
+  .ordem {
+    width: 100%;
+  }
+}

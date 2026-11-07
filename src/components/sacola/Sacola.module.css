@@ -1,0 +1,368 @@
+.vazia {
+  min-height: 50vh;
+}
+.vaziaAcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+/* ---------- Peças ---------- */
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--linha);
+}
+.item {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--linha);
+}
+.miniatura {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--linha-ouro);
+}
+.itemTexto {
+  display: grid;
+  gap: 0.2rem;
+}
+.itemNumero {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--marsala);
+}
+.itemNome {
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: var(--marsala);
+}
+.itemNome a {
+  text-decoration: none;
+}
+.itemNome a:hover {
+  text-decoration: underline;
+}
+.itemPreco {
+  font-size: 1rem;
+}
+.itemTempo {
+  display: grid;
+  justify-items: end;
+  gap: 0.35rem;
+  min-width: 120px;
+}
+.relogio {
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--marsala);
+}
+.item[data-urgente] .relogio {
+  color: var(--terracota-texto);
+}
+.barra {
+  width: 100%;
+  height: 3px;
+  background: var(--linha);
+  overflow: hidden;
+}
+.barra span {
+  display: block;
+  height: 100%;
+  background: var(--marsala);
+  transform-origin: left;
+  transition: transform 1s linear;
+}
+.item[data-urgente] .barra span {
+  background: var(--terracota);
+}
+.liberar {
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.8125rem;
+  color: var(--terra);
+  text-decoration: underline;
+  text-decoration-color: var(--linha);
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+.liberar:hover {
+  color: var(--marsala);
+}
+.regra {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+  max-width: 56ch;
+  color: var(--terra);
+}
+
+/* ---------- Checkout ---------- */
+
+.checkout {
+  position: sticky;
+  top: 96px;
+  display: grid;
+  gap: 1.75rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--areia-clara);
+  box-shadow:
+    inset 0 0 0 1px var(--linha-ouro),
+    var(--sombra-peca);
+}
+.checkout h2 {
+  font-size: 2rem;
+}
+.grupo {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.grupo legend {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--marsala);
+  background-image: var(--faixa);
+  background-repeat: repeat-x;
+  background-position: bottom left;
+}
+.dupla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.nota {
+  font-size: 0.9375rem;
+  color: var(--terra);
+}
+.resumoErros {
+  padding: 1rem 1.1rem;
+  border-radius: var(--raio);
+  background: color-mix(in srgb, var(--terracota) 12%, var(--areia-clara));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--terracota) 50%, transparent);
+  font-size: 0.9375rem;
+  color: var(--marsala-escuro);
+}
+.resumoErros ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+}
+.totais {
+  display: grid;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed color-mix(in srgb, var(--terra) 40%, transparent);
+  font-size: 0.9375rem;
+}
+.totais > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.total {
+  margin-top: 0.4rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  color: var(--marsala);
+}
+.dica {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--terra-suave);
+}
+.ruaNumero {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+/* Motoboy / Correios: nome + valor e prazo */
+.opcaoEntrega {
+  flex: 1 1 200px;
+}
+.opcaoEntrega input + span {
+  display: grid;
+  justify-items: start;
+  gap: 0.15rem;
+  width: 100%;
+  padding-block: 0.7rem;
+}
+.opcaoEntrega strong {
+  font-weight: 500;
+}
+.opcaoEntrega small {
+  font-size: 0.8125rem;
+  opacity: 0.8;
+}
+.opcaoEntrega input:disabled + span {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tabelaFrete summary {
+  display: inline-block;
+  padding-block: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--marsala);
+  text-decoration: underline;
+  text-decoration-color: var(--linha-ouro);
+  text-underline-offset: 0.35em;
+  cursor: pointer;
+  list-style: none;
+}
+.tabelaFrete summary::-webkit-details-marker {
+  display: none;
+}
+.tabelas {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+.tabelas table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.tabelas caption {
+  padding-bottom: 0.4rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terra-suave);
+}
+.tabelas th,
+.tabelas td {
+  padding: 0.5rem 0.4rem;
+  border-top: 1px solid var(--linha);
+  text-align: left;
+  font-weight: 400;
+}
+.tabelas td:last-child {
+  text-align: right;
+  color: var(--terra-suave);
+}
+.tabelas tr[data-atual] {
+  background: color-mix(in srgb, var(--marsala) 10%, transparent);
+  color: var(--marsala);
+  font-weight: 500;
+}
+
+/* Pix: QR Code + copia e cola */
+.pix {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--areia);
+  box-shadow: inset 0 0 0 1px var(--linha-ouro);
+  text-align: center;
+}
+.pixTitulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.375rem;
+  color: var(--marsala);
+}
+.qr {
+  display: grid;
+  place-items: center;
+  width: min(240px, 100%);
+  aspect-ratio: 1;
+  padding: 10px;
+  background: #fffaf5;
+  box-shadow: inset 0 0 0 1px var(--linha-ouro);
+}
+.qr img {
+  width: 100%;
+  height: auto;
+}
+.copiaCola {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  width: 100%;
+}
+.copiaCola input {
+  font-size: 0.8125rem;
+  text-overflow: ellipsis;
+}
+.copiaCola .botao,
+.copiaCola :global(.botao) {
+  min-height: 0;
+}
+.voltar {
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border: 0;
+  background: none;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra-suave);
+  cursor: pointer;
+}
+.voltar:hover {
+  color: var(--marsala);
+}
+
+@media (max-width: 900px) {
+  .grade {
+    grid-template-columns: 1fr;
+  }
+  .checkout {
+    position: static;
+  }
+}
+@media (max-width: 560px) {
+  .ruaNumero {
+    grid-template-columns: 1fr;
+  }
+  .item {
+    grid-template-columns: 84px 1fr;
+  }
+  .itemTempo {
+    grid-column: 1 / -1;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-items: stretch;
+    gap: 0.9rem;
+  }
+  .relogio {
+    font-size: 1.5rem;
+  }
+  .dupla {
+    grid-template-columns: 1fr;
+  }
+}

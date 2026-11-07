@@ -1,0 +1,61 @@
+.vitrine {
+  --lx: 30%;
+  --ly: 10%;
+  position: relative;
+}
+
+.foto {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--raio);
+  background: var(--areia-funda);
+}
+/* filete interno bem discreto, só para assentar a foto no fundo areia */
+.foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--terra) 12%, transparent);
+  pointer-events: none;
+}
+.vitrine[data-proporcao="quadrado"] .foto {
+  aspect-ratio: 1;
+}
+.vitrine[data-proporcao="alta"] .foto {
+  aspect-ratio: 3 / 4;
+}
+.vitrine[data-proporcao="livre"],
+.vitrine[data-proporcao="livre"] .foto {
+  height: 100%;
+}
+.vitrine[data-proporcao="livre"] .foto {
+  aspect-ratio: auto;
+}
+.foto img {
+  transition:
+    filter 1.4s var(--ease),
+    transform 1.2s var(--ease);
+}
+.vitrine:hover .foto img {
+  transform: scale(1.04);
+}
+
+.vidro {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--lx) var(--ly), rgb(255 248 236 / 0.22), transparent 45%);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  transition: opacity 0.8s var(--ease);
+}
+.vitrine:hover .vidro {
+  opacity: 1;
+}
+
+/* Acervo: foto em cor, como exposição; só some o reflexo de vidro da vitrine */
+.vitrine[data-arquivo] .vidro {
+  opacity: 0;
+}

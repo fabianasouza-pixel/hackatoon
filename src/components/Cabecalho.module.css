@@ -1,0 +1,238 @@
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--marsala);
+  color: var(--areia);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--ouro) 55%, transparent), 0 8px 24px -16px rgb(73 49 38 / 0.6);
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  min-height: 72px;
+}
+
+.marca {
+  color: var(--areia);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav {
+  margin-left: auto;
+}
+.nav ul {
+  display: flex;
+  gap: 2.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav a {
+  position: relative;
+  display: inline-block;
+  padding-block: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: color-mix(in srgb, var(--areia) 88%, transparent);
+  transition: color 0.3s var(--ease);
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.15rem;
+  height: 1px;
+  background: var(--ouro-claro);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease);
+}
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--areia);
+}
+.nav a:hover::after,
+.nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Casinha: volta para a página inicial de qualquer tela */
+.inicio {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  /* fica perto da logo, não no espaçamento grande da barra */
+  margin-left: -1.25rem;
+  border-radius: var(--raio);
+  color: var(--areia);
+  transition: background-color 0.3s var(--ease);
+}
+.inicio:hover {
+  background: color-mix(in srgb, var(--areia) 10%, transparent);
+}
+.inicio[aria-current="page"] {
+  color: var(--ouro-claro);
+}
+
+.sacola {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  min-width: 44px;
+  justify-content: center;
+  padding: 0 0.6rem;
+  border-radius: var(--raio);
+  color: var(--areia);
+  text-decoration: none;
+  transition: background-color 0.3s var(--ease);
+}
+.sacola:hover,
+.conta:hover {
+  background: color-mix(in srgb, var(--areia) 10%, transparent);
+}
+.conta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 0.6rem;
+  border-radius: var(--raio);
+  color: var(--areia);
+  text-decoration: none;
+  transition: background-color 0.3s var(--ease);
+}
+.contaTexto {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.nav a {
+  white-space: nowrap;
+}
+/* telas médias: a conta vira só o ícone, para o menu caber numa linha */
+@media (max-width: 1180px) {
+  .contaTexto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}
+.qtd {
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: var(--raio);
+  background: var(--ouro-claro);
+  color: var(--marsala-escuro);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.timer {
+  font-size: 0.8125rem;
+  color: var(--areia);
+}
+.sacola[data-urgente] {
+  background: var(--terracota-texto);
+  animation: pulso 1.6s var(--ease) infinite;
+}
+@keyframes pulso {
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--terracota) 30%, transparent);
+  }
+}
+
+.menu {
+  display: none;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--areia);
+  cursor: pointer;
+  border-radius: var(--raio);
+}
+
+@media (max-width: 900px) {
+  .barra {
+    gap: 1rem;
+    min-height: 64px;
+  }
+  .inicio {
+    margin-left: -0.5rem;
+  }
+  .acoes {
+    margin-left: auto;
+  }
+  .contaTexto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+  .menu {
+    display: grid;
+  }
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    background: var(--marsala);
+    border-top: 1px solid color-mix(in srgb, var(--ouro) 45%, transparent);
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+    transition:
+      clip-path 0.45s var(--ease),
+      visibility 0s linear 0.45s;
+  }
+  .nav[data-aberto] {
+    clip-path: inset(0 0 -20px 0);
+    visibility: visible;
+    transition: clip-path 0.45s var(--ease);
+  }
+  .nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem var(--gutter) 1.25rem;
+  }
+  .nav li + li {
+    border-top: 1px solid color-mix(in srgb, var(--areia) 12%, transparent);
+  }
+  .nav a {
+    display: block;
+    padding-block: 1rem;
+    font-size: 0.875rem;
+  }
+  .nav a::after {
+    display: none;
+  }
+}
